@@ -22,6 +22,7 @@ A simple Java 17 collaborative editor using a **client-server model**.
 - `ChangeListener` — computes local text diffs and emits `Operation`s.
 - `EditorClient` — JSR-356 WebSocket client.
 - `RemoteApplier` — applies remote operations safely on the Swing EDT.
+- `web-client/` — React + Vite browser frontend that connects directly to the same WebSocket server.
 
 ### Shared Components
 
@@ -86,3 +87,19 @@ Open multiple client windows and edit collaboratively.
 ```bash
 mvn test
 ```
+
+## Web Frontend (React)
+
+A browser frontend is available in `web-client/`.
+
+### Run React app
+
+```bash
+cd web-client
+npm install
+npm run dev
+```
+
+Open: `http://localhost:5173`
+
+> Keep the Java WebSocket server running first (`ServerMain`) so the React app can connect to `ws://localhost:8025/ws/document`.
